@@ -1,0 +1,35 @@
+.texts {
+  color: #002c8f !important;
+  font-size: 1.2rem;
+  text-decoration: none !important;
+  margin-right: 2rem !important;
+  font-weight: 700;
+}
+
+.texts:hover {
+  color: #21b6ff !important;
+}
+
+.appBar {
+  /* position: sticky top !important; */
+  background-color: #eeeeee00 !important;
+}
+
+.responsiveNavs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  padding-top: 10.5rem !important;
+  padding-left: 4.5rem !important;
+}
+.texts1 {
+  color: #002c8f !important;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  margin-right: 2rem !important;
+}
+
+.texts1:hover {
+  color: #ffa500 !important;
+}

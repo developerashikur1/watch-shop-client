@@ -1,0 +1,37 @@
+.reviewControlForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.reviewControlForm input {
+  font-size: 1.1rem;
+  padding-left: 1rem;
+  height: 2.5rem;
+}
+
+/* .reviewControlForm textarea {
+      font-family: Arial, Helvetica, sans-serif;
+      height: 8rem;
+      font-size: 1.1rem;
+      padding-left: 0.5rem;
+    } */
+
+.addReviewButton {
+  text-align: center !important;
+  background-color: #f8b71d !important;
+  color: whitesmoke !important;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.9rem 2rem;
+  border-radius: 0.2rem !important;
+  box-shadow: 0.2rem 0.5rem 2rem 0.5rem rgba(0, 0, 0, 0.13) !important;
+  border: none;
+  align-items: center;
+  transition: ease-in-out 0.4s;
+}
+
+.addReviewButton:hover {
+  cursor: pointer;
+  background-color: #ebad1d !important;
+}
