@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Header.module.css'
 import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -6,12 +6,14 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { Button, Divider, Drawer, List, useTheme } from '@mui/material';
+import { Avatar, Button, Divider, Drawer, Fab, List, Menu, MenuItem, Tooltip, useTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
-import { indigo } from '@mui/material/colors';
+import { deepOrange, grey, indigo, yellow } from '@mui/material/colors';
+import useFirebase from '../../Hooks/useFirebase';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   alignItems: 'flex-start',
@@ -23,8 +25,12 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   },
 }));
 
+
 const Header = () => {
   const theme = useTheme();
+
+  const {user, logOut} = useFirebase();
+
   const useStyles = makeStyles({
     menuIconBreak:{
       [theme.breakpoints.up('sm')]: {
@@ -85,7 +91,7 @@ const Header = () => {
           sx={{ flexGrow: 1 }}
           style={{marginLeft:'1.5rem', marginTop:'1.5rem'}}
       >
-          <img style={{width:'4rem'}} src='/' alt='' />
+          <img style={{width:'4rem'}} src='https://i.ibb.co/bNQJ4xd/image-33.jpg' alt='' />
       </Typography>
         <List className={styles.responsiveNavs}>
               <Link  className={`${styles.texts1}`} to="/home">Home</Link>  
@@ -103,10 +109,16 @@ const Header = () => {
   );
 
 
+  const handleLogOutUser = (e) =>{
+    e.preventDefault();
+    logOut();
+  }
+  // extra end
+  // className={styles.appBar}
     return (
         <div>
             <Box sx={{ flexGrow: 1}}>
-              <AppBar className={styles.appBar} position="static">
+              <AppBar sx={{bgcolor:'#262626'}} position="static">
                 <StyledToolbar>
                   <Typography
                     variant="h5"
@@ -114,7 +126,7 @@ const Header = () => {
                     component="div"
                     sx={{ flexGrow: 1 }}
                   >
-                    <img style={{width:'4rem'}} src='/' alt='' />
+                    <img style={{width:'4rem'}} src='https://i.ibb.co/bNQJ4xd/image-33.jpg' alt='' />
                   </Typography>
 
                   <Box className={navsLinkDesktop} style={{marginTop:'1.2rem'}}>
@@ -124,8 +136,29 @@ const Header = () => {
                       <Link  className={`${styles.texts}`} to="/gallery">Gallery</Link>  
                       <Link  className={`${styles.texts}`} to="/blogs">Blogs</Link>  
                       <Link  className={`${styles.texts}`} to="/contacts">Contacts</Link>  
-                      <Link  className={`${styles.texts}`} to="/teams">Team</Link>  
                   </Box>
+
+                  {/* Logout and Profile button */}
+
+                  {user?.email &&
+                    <Box className={navsLinkDesktop} style={{display:'flex', justifyContent:'center', marginTop:'13px', alignItems:'center'}}>
+                    <Tooltip title={user?.displayName}>
+                      <IconButton sx={{ p: 0 }}>
+                        {user?.photoURL ?
+                        <Avatar alt="Remy Sharp" src={user?.photoURL} />
+                        :
+                        <Avatar sx={{ bgcolor: deepOrange[500] }}>{user?.displayName?.slice(0,1).toUpperCase()}</Avatar>
+                        }
+                      </IconButton>
+                    </Tooltip>
+                      <Typography fontWeight={900} sx={{ flexGrow: 1, ml:1, color: deepOrange[500]}} textAlign="center">{user?.displayName}</Typography>
+                      <MenuItem onClick={handleLogOutUser}>
+                              <Fab title="Logout" sx={{bgcolor:yellow[700], width:36,height:30, display:'flex', flexDirection:'column'}} aria-label="add">
+                              <LogoutIcon sx={{color:grey[900], fontSize:22, fontWeight:900}}/>
+                              </Fab>
+                      </MenuItem> 
+                  </Box>
+                  }
 
                   <IconButton
                     size="large"
@@ -136,8 +169,6 @@ const Header = () => {
                     onClick={toggleDrawer('right', true)}
                   >
                   <MenuIcon sx={{color:indigo[600], fontSize:42, fontWeight:900}}/>
-                    {/* <i style={{width:'5rem'}} className="fas fa-bars"></i> */}
-                    {/* <MenuIcon/> */}
                   </IconButton>
                   
                 </StyledToolbar>

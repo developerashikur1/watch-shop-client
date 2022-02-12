@@ -1,9 +1,9 @@
 .texts {
-  color: #002c8f !important;
+  color: #f8b71d !important;
   font-size: 1.2rem;
   text-decoration: none !important;
   margin-right: 2rem !important;
-  font-weight: 700;
+  font-weight: 600 !important;
 }
 
 .texts:hover {

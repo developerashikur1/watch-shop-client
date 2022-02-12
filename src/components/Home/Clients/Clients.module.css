@@ -1,0 +1,12 @@
+.client {
+  overflow: hidden;
+}
+.client img {
+  width: 100%;
+  transition: ease 0.7s;
+}
+.client:hover img {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: ease 0.2s;
+}

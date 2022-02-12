@@ -1,0 +1,10 @@
+.icons {
+  transition: ease 0.7s;
+}
+
+.icons:hover {
+  background-color: whitesmoke;
+  color: rgb(255, 175, 27);
+  transform: scale(1.2);
+  transition: ease 0.1s;
+}
