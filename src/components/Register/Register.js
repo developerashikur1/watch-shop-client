@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import styles from './Register.module.css';
 import GoogleIcon from '@mui/icons-material/Google';
 import useAuth from '../contexts/useAuth';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     const {googleSignInMethod, emailPassRegisterMethod} = useAuth();
@@ -44,6 +45,8 @@ const Register = () => {
                                 </form>
                                 <Box style={{borderBottom:'1px solid grey',position:'relative', margin:'3rem 0rem'}}><span style={{position:'absolute', bottom:'-10px', padding:'1px 5px', backgroundColor:'white', left:'49%'}}>or</span></Box>
                                 <Button className={styles.addReviewButton} sx={{width:'100%'}} onClick={handleGoogleButton}><GoogleIcon sx={{color:'green', fontSize:32}}/> &nbsp; Sign in with Google</Button>
+                                <br/><br/><br/>
+                                <Link to="/login" style={{fontWeight:'800', textDecoration:'none'}}>Already Registered? <span style={{color:'green'}}>LOGIN</span></Link>
                             </Grid>
 
                             <Grid item xs={0} md={4}>
