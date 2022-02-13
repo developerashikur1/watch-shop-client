@@ -91,7 +91,7 @@ const Header = () => {
           sx={{ flexGrow: 1 }}
           style={{marginLeft:'1.5rem', marginTop:'1.5rem'}}
       >
-          <img style={{width:'4rem'}} src='https://i.ibb.co/bNQJ4xd/image-33.jpg' alt='' />
+          <img style={{width:'4rem'}} src='https://i.ibb.co/HrRjh9w/gold1.png' alt='' />
       </Typography>
         <List className={styles.responsiveNavs}>
               <Link  className={`${styles.texts1}`} to="/home">Home</Link>  
@@ -126,7 +126,7 @@ const Header = () => {
                     component="div"
                     sx={{ flexGrow: 1 }}
                   >
-                    <img style={{width:'4rem'}} src='https://i.ibb.co/bNQJ4xd/image-33.jpg' alt='' />
+                    <img style={{width:'4rem'}} src='https://i.ibb.co/HrRjh9w/gold1.png' alt='' />
                   </Typography>
 
                   <Box className={navsLinkDesktop} style={{marginTop:'1.2rem'}}>

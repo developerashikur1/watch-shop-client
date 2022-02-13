@@ -2,10 +2,10 @@ import { Box, Button, Container, Grid, Tab, Tabs } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './TimePices.css';
+import './ProductsAllPage.css';
 
 
-const allServices = [
+const services = [
     {   
         id:1,
         categories:'Featured',
@@ -202,67 +202,25 @@ const allServices = [
     },
 ];
 
-const TimePices = () => {
-    const [services, setServices] = useState([]);
-    const [value, setValue] = useState(0);
-    
-    useEffect(()=>{
-        switch (value) {
-            case 0:{
-                const service = allServices.filter(targeted=>targeted?.categories.toLowerCase().includes('best seller'));
-                setServices(service)
-                break;
-              }
-              case 1:{
-                  const service = allServices.filter(targeted=>targeted?.categories.toLowerCase().includes('recent'));
-                  setServices(service)
-                  
-                  break
-              }
-              case 2:{
-                  const service = allServices.filter(targeted=>targeted?.categories.toLowerCase().includes('featured'));
-                  setServices(service)
-                  
-            }
-            default:
-                break;
-            }
-        
-    },[value])
-
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-      
-    };
-
+const ProductsAll = () => {
     
     return (
-        <Box className="portfolio-section"id="projects">
+        <Box sx={{bgcolor:'#262626'}} className="portfolio-section"id="projects">
             <Container sx={{py:8}}>
             <Typography fontWeight={600} sx={{textAlign:'center', fontSize :{md:18, xs:16 },
                     color:'whitesmoke'}} variant="h2"  gutterBottom component="div">
-                    Our Timeless
+                    All Timeless
                     </Typography> 
                     <Typography fontWeight={900} sx={{textAlign:'center', mb:6, fontSize :{md:46, xs:26 },
                     color:'#ffc400'}} variant="h2"  gutterBottom component="div">
-                    Timepieces
+                    All Watches
                     </Typography> 
                     <Typography fontWeight={600} sx={{textAlign:'center',mb:12, fontSize :{md:18, xs:16 },
                     color:'whitesmoke'}} variant="h2"  gutterBottom component="div">
                     Unparalleled Portfolio
                     Of Timepieces
                     </Typography>  
-                
                 <br />
-                <Box>
-                    <Box sx={{ width: '100%' }}>
-                    <Tabs value={value} onChange={handleChange} centered>
-                        <Tab selected sx={{color:'whiteSmoke', '.Mui-selected':{color:'green'}}} label="Best Seller" />
-                        <Tab sx={{color:'whiteSmoke'}} label="Recent" />
-                        <Tab sx={{color:'whiteSmoke'}} label="Featured" />
-                    </Tabs>
-                    </Box>
-                </Box>
 
                 {/* link section (dynamic route) */}
                 <Box className='link-container'>
@@ -276,7 +234,7 @@ const TimePices = () => {
                         spacing={2}>
                         {/* spacing={{md:2, lg:4}} */}
                         {
-                            services.map((service, index) => <Grid key={index} item xs={12} sm={6} md={3}>
+                            services.map((service, index) => <Grid key={index} item xs={12} sm={6} md={4}>
                                 <Box sx={{ textAlign: 'center' }}>
                                     <Box className="box-items">
                                         <>
@@ -304,13 +262,10 @@ const TimePices = () => {
                         }
                     </Grid>
                 </Box>
-                <br /> <br />
-                <Link style={{textDecoration:'none'}} to="/productsAll"><Button variant='contained' sx={{ backgroundColor: '#ffc400', color: 'white', padding: '10px 20px', display: 'flex', margin: 'auto', borderRadius: '0' }}>Load More</Button></Link>
-                <br /> <br />
             </Container>
 
         </Box>
     );
 };
 
-export default TimePices;
+export default ProductsAll;

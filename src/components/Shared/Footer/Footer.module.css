@@ -8,3 +8,18 @@
   transform: scale(1.2);
   transition: ease 0.1s;
 }
+
+.menuLink a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.menuLink a:hover {
+  cursor: pointer;
+  color: rgb(255, 175, 27);
+}

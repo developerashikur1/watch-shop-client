@@ -1,9 +1,9 @@
-import { Box, Button, Container, Grid, Tab, Tabs } from '@mui/material';
-import Typography from '@mui/material/Typography';
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import './TimePices.css';
-
+import { useForm } from 'react-hook-form';
+import { useNavigate, useParams } from 'react-router-dom';
+import useFirebase from '../Hooks/useFirebase';
+import styles from './PurchasePage.module.css';
 
 const allServices = [
     {   
@@ -202,115 +202,82 @@ const allServices = [
     },
 ];
 
-const TimePices = () => {
+const PurchasePase = () => {
     const [services, setServices] = useState([]);
-    const [value, setValue] = useState(0);
-    
-    useEffect(()=>{
-        switch (value) {
-            case 0:{
-                const service = allServices.filter(targeted=>targeted?.categories.toLowerCase().includes('best seller'));
-                setServices(service)
-                break;
-              }
-              case 1:{
-                  const service = allServices.filter(targeted=>targeted?.categories.toLowerCase().includes('recent'));
-                  setServices(service)
-                  
-                  break
-              }
-              case 2:{
-                  const service = allServices.filter(targeted=>targeted?.categories.toLowerCase().includes('featured'));
-                  setServices(service)
-                  
-            }
-            default:
-                break;
-            }
-        
-    },[value])
 
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-      
+    const {user} = useFirebase();
+
+    const {purchaseId} = useParams();
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        if(purchaseId){
+            const service = allServices.filter(one=>one?.id==purchaseId);
+            setServices(service)
+        }
+        else{
+            navigate('/')
+        }
+    },[purchaseId, navigate])
+    
+
+    const { register, handleSubmit, reset } = useForm();
+
+    const onSubmit = data => {
+        console.log(data)
+        reset();
     };
 
     
     return (
-        <Box className="portfolio-section"id="projects">
-            <Container sx={{py:8}}>
-            <Typography fontWeight={600} sx={{textAlign:'center', fontSize :{md:18, xs:16 },
-                    color:'whitesmoke'}} variant="h2"  gutterBottom component="div">
-                    Our Timeless
-                    </Typography> 
-                    <Typography fontWeight={900} sx={{textAlign:'center', mb:6, fontSize :{md:46, xs:26 },
+        <>
+         <Box sx={{ bgcolor:'#262626' }}>
+             <Container sx={{py:8}}>
+             <Typography fontWeight={900} sx={{textAlign:'center', mb:6, fontSize :{md:46, xs:26 },
                     color:'#ffc400'}} variant="h2"  gutterBottom component="div">
-                    Timepieces
+                    Purchase Product
                     </Typography> 
-                    <Typography fontWeight={600} sx={{textAlign:'center',mb:12, fontSize :{md:18, xs:16 },
-                    color:'whitesmoke'}} variant="h2"  gutterBottom component="div">
-                    Unparalleled Portfolio
-                    Of Timepieces
-                    </Typography>  
-                
-                <br />
-                <Box>
-                    <Box sx={{ width: '100%' }}>
-                    <Tabs value={value} onChange={handleChange} centered>
-                        <Tab selected sx={{color:'whiteSmoke', '.Mui-selected':{color:'green'}}} label="Best Seller" />
-                        <Tab sx={{color:'whiteSmoke'}} label="Recent" />
-                        <Tab sx={{color:'whiteSmoke'}} label="Featured" />
-                    </Tabs>
-                    </Box>
-                </Box>
-
-                {/* link section (dynamic route) */}
-                <Box className='link-container'>
-                </Box>
-                <br /> <br />
-                <Box>
-                    <Grid container direction="row"
-                        justifyContent="center"
-                        alignItems="center"
-                        rowSpacing={3}
-                        spacing={2}>
-                        {/* spacing={{md:2, lg:4}} */}
-                        {
-                            services.map((service, index) => <Grid key={index} item xs={12} sm={6} md={3}>
-                                <Box sx={{ textAlign: 'center' }}>
-                                    <Box className="box-items">
-                                        <>
-                                            <Box className="content">
-                                                <Box className="content-overlay"></Box>
-                                                <img className="content-image" src={service.img} alt="" />
-                                                <Box className="content-details fadeIn-bottom">
-                                                    <Typography style={{ color: 'white' }} variant='p'>{service.description}</Typography>
-                                                    <br/>
-                                                    <Link to={`/purchase/${service?.id}`} style={{textDecoration:'none'}}>
-                                                    <Button variant='contained' size="small" sx={{ backgroundColor: 'white', color: '#ffc400', display: 'flex', margin: 'auto', borderRadius: '1rem', pt:.8 }}>Buy Now</Button>
-                                                    </Link>
-                                                </Box>
-                                                <Box className="text-div">
-                                                </Box>
-                                                <Box className="text-content">
-                                                    <Typography variant='h6'>{service.name}</Typography>
-                                                    <Typography style={{color:'black'}} fontSize={16} fontWeight={700} variant='primary'>Price ${service.price}</Typography>
-                                                </Box>
-                                            </Box>
-                                        </>
-                                    </Box>
-                                </Box>
-                            </Grid>)
-                        }
+                <Grid container spacing={2}>
+                    <Grid item xs={12} md={6}>
+                         <Card sx={{ maxWidth: 345, bgcolor:'#262626' }}>
+                            <CardMedia
+                                component="img"
+                                // height="140"
+                                sx={{height:'100%'}}
+                                image={services[0]?.img}
+                                alt="green iguana"
+                            />
+                            <CardContent>
+                                <Typography sx={{color:'whitesmoke'}} gutterBottom variant="h5" component="div">
+                                {services[0]?.name}
+                                </Typography>
+                                <Typography sx={{color:'whitesmoke'}} variant="body2" color="text.secondary">
+                                {services[0]?.name} {services[0]?.description}
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button sx={{color:'whitesmoke'}} size="small">Price ${services[0]?.price}</Button>
+                            </CardActions>
+                        </Card>
                     </Grid>
-                </Box>
-                <br /> <br />
-                <Link style={{textDecoration:'none'}} to="/productsAll"><Button variant='contained' sx={{ backgroundColor: '#ffc400', color: 'white', padding: '10px 20px', display: 'flex', margin: 'auto', borderRadius: '0' }}>Load More</Button></Link>
-                <br /> <br />
-            </Container>
 
-        </Box>
+                    {/* user details and place order form */}
+                    <Grid item xs={12} md={6}>
+                                <form className={styles.reviewControlForm} onSubmit={handleSubmit(onSubmit)}>
+                                    <input required placeholder='Your Name'{...register("name")} />
+                                    <input required type='number' placeholder='Your Phone'{...register("phone")} />
+                                    <input required placeholder='Your Address'{...register("address")}/>
+                                    {/* <input placeholder='Your Email'{...register("email")} />
+                                    <input placeholder='Your Email'{...register("email")} /> */}
+                                    
+                                    <button className={styles.addReviewButton} type="submit">Place Order</button>
+                                </form>
+                    </Grid>
+                </Grid>
+             </Container>
+         </Box>   
+        </>
     );
 };
 
-export default TimePices;
+export default PurchasePase;
