@@ -4,10 +4,10 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './Login.module.css';
 import GoogleIcon from '@mui/icons-material/Google';
-import useFirebase from '../Hooks/useFirebase';
+import useAuth from '../contexts/useAuth';
 
 const Login = () => {
-    const {googleSignInMethod, signInUsingUserPassword} = useFirebase();
+    const {googleSignInMethod, signInUsingUserPassword} = useAuth();
     
     // react hook form
     const { register, handleSubmit, reset } = useForm();

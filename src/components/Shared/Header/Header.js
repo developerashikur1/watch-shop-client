@@ -12,8 +12,8 @@ import { Link } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import { deepOrange, grey, indigo, yellow } from '@mui/material/colors';
-import useFirebase from '../../Hooks/useFirebase';
 import LogoutIcon from '@mui/icons-material/Logout';
+import useAuth from '../../contexts/useAuth';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   alignItems: 'flex-start',
@@ -29,7 +29,8 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 const Header = () => {
   const theme = useTheme();
 
-  const {user, logOut} = useFirebase();
+  // const {user, logOut} = useFirebase();
+  const {user, logOut} = useAuth();
 
   const useStyles = makeStyles({
     menuIconBreak:{
@@ -96,11 +97,9 @@ const Header = () => {
         <List className={styles.responsiveNavs}>
               <Link  className={`${styles.texts1}`} to="/home">Home</Link>  
               <Link  className={`${styles.texts1}`} to="/about">About</Link>  
-              <Link  className={`${styles.texts1}`} to="/products">Products</Link>  
-              <Link  className={`${styles.texts1}`} to="/gallery">Gallery</Link>  
-              <Link  className={`${styles.texts1}`} to="/blogs">Blogs</Link>  
+              <Link  className={`${styles.texts1}`} to="/productsAll">All Watches</Link>  
+              {/* <Link  className={`${styles.texts1}`} to="/blogs">Blogs</Link>   */}
               <Link  className={`${styles.texts1}`} to="/contacts">Contacts</Link>  
-              <Link  className={`${styles.texts1}`} to="/teams">Team</Link> 
         {/* <IconButton> */}
         
         {/* </IconButton> */}
@@ -132,10 +131,10 @@ const Header = () => {
                   <Box className={navsLinkDesktop} style={{marginTop:'1.2rem'}}>
                       <Link  className={`${styles.texts}`} to="/home">Home</Link>  
                       <Link  className={`${styles.texts}`} to="/about">About</Link>  
-                      <Link  className={`${styles.texts}`} to="/products">Products</Link>  
-                      <Link  className={`${styles.texts}`} to="/gallery">Gallery</Link>  
-                      <Link  className={`${styles.texts}`} to="/blogs">Blogs</Link>  
+                      <Link  className={`${styles.texts}`} to="/productsAll">All Watches</Link> 
+                      {/* <Link  className={`${styles.texts}`} to="/blogs">Blogs</Link>   */}
                       <Link  className={`${styles.texts}`} to="/contacts">Contacts</Link>  
+                      {!user?.email && <Link style={{textDecoration:'none'}} to="/login"><Button sx={{bgcolor:'#F8B71D', color:'whitesmoke'}}>Login</Button></Link>}
                   </Box>
 
                   {/* Logout and Profile button */}

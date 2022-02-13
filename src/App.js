@@ -8,10 +8,11 @@ import Header from './components/Shared/Header/Header'
 import Footer from './components/Shared/Footer/Footer';
 import ProductsAll from './components/ProductsAllPage/ProductsAll';
 import PurchasePase from './components/PurchasePage/PurchasePase';
+import AuthProvider from './components/contexts/AuthProvider';
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Router>
       <Header></Header>
         <Routes>
@@ -24,7 +25,7 @@ function App() {
         </Routes>
         <Footer></Footer>
       </Router>
-    </>
+    </AuthProvider>
   );
 }
 
