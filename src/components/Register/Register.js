@@ -5,10 +5,12 @@ import { useForm } from 'react-hook-form';
 import styles from './Register.module.css';
 import GoogleIcon from '@mui/icons-material/Google';
 import useAuth from '../contexts/useAuth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const {googleSignInMethod, emailPassRegisterMethod} = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
     
     // react hook form
     const { register, handleSubmit, reset } = useForm();
@@ -16,13 +18,13 @@ const Register = () => {
         const displayName = data.userName;
         const email = data.userEmail;
         const password = data.userPassword;
-        emailPassRegisterMethod(email, password, displayName);
+        emailPassRegisterMethod(email, password, displayName, navigate);
         reset();
     };
      
     const handleGoogleButton = (e) =>{
         e.preventDefault();
-        googleSignInMethod();
+        googleSignInMethod(location, navigate);
     }
 
     return (

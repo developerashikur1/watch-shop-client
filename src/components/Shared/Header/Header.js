@@ -100,6 +100,8 @@ const Header = () => {
               <Link  className={`${styles.texts1}`} to="/productsAll">All Watches</Link>  
               {/* <Link  className={`${styles.texts1}`} to="/blogs">Blogs</Link>   */}
               <Link  className={`${styles.texts1}`} to="/contacts">Contacts</Link>  
+              <Link  className={`${styles.texts}`} to="/dashboard">Dashboard</Link>    
+              {!user?.email && <Link style={{textDecoration:'none'}} to="/login"><Button sx={{bgcolor:'#F8B71D', color:'whitesmoke'}}>Login</Button></Link>}
         {/* <IconButton> */}
         
         {/* </IconButton> */}
@@ -134,6 +136,7 @@ const Header = () => {
                       <Link  className={`${styles.texts}`} to="/productsAll">All Watches</Link> 
                       {/* <Link  className={`${styles.texts}`} to="/blogs">Blogs</Link>   */}
                       <Link  className={`${styles.texts}`} to="/contacts">Contacts</Link>  
+                      <Link  className={`${styles.texts}`} to="/dashboard">Dashboard</Link>  
                       {!user?.email && <Link style={{textDecoration:'none'}} to="/login"><Button sx={{bgcolor:'#F8B71D', color:'whitesmoke'}}>Login</Button></Link>}
                   </Box>
 

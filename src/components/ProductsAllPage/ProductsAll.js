@@ -1,206 +1,9 @@
-import { Box, Button, Container, Grid, Tab, Tabs } from '@mui/material';
+import { Box, Button, Container, Grid, LinearProgress } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ProductsAllPage.css';
 
-
-// const services = [
-//     {   
-//         id:1,
-//         categories:'Featured',
-//         name: 'Watch',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:2,
-//         categories:'Featured',
-//         name: 'Watch',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:3,
-//         categories:'Featured',
-//         name: 'Watch',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:4,
-//         categories:'Featured',
-//         name: 'Watch',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:5,
-//         categories:'Featured',
-//         name: 'Watch',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:6,
-//         categories:'Featured',
-//         name: 'Watch',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:7,
-//         categories:'Featured',
-//         name: 'Watch',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:8,
-//         categories:'Featured',
-//         name: 'Watch',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-    
-//     {   
-//         id:9,
-//         categories:'Recent',
-//         name: 'WatchR',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:10,
-//         categories:'Recent',
-//         name: 'WatchR',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:11,
-//         categories:'Recent',
-//         name: 'WatchR',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:12,
-//         categories:'Recent',
-//         name: 'WatchR',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:13,
-//         categories:'Recent',
-//         name: 'WatchR',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:14,
-//         categories:'Recent',
-//         name: 'WatchR',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:15,
-//         categories:'Recent',
-//         name: 'WatchR',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:16,
-//         categories:'Recent',
-//         name: 'WatchR',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-
-//     {   
-//         id:17,
-//         categories:'Best Seller',
-//         name: 'WatchB',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:18,
-//         categories:'Best Seller',
-//         name: 'WatchB',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:19,
-//         categories:'Best Seller',
-//         name: 'WatchB',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:20,
-//         categories:'Best Seller',
-//         name: 'WatchB',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:21,
-//         categories:'Best Seller',
-//         name: 'WatchB',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:22,
-//         categories:'Best Seller',
-//         name: 'WatchB',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:23,
-//         categories:'Best Seller',
-//         name: 'WatchB',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-//     {   
-//         id:24,
-//         categories:'Best Seller',
-//         name: 'WatchB',
-//         img: 'https://i.ibb.co/fp1BrHN/1-1-300x300.jpg',
-//         price: 80,
-//         description: 'We are very passionate about our work. You can say we love the watches that we offer to our customers. And, every time we sell one – we are actually giving a piece of our heart to them.'
-//     },
-// ];
 
 const ProductsAll = () => {
     const [services, setServices] = useState([]);
@@ -212,12 +15,13 @@ const ProductsAll = () => {
         .then(data=>setServices(data))
     },[])
 
-    
     return (
+        <>
+
         <Box sx={{bgcolor:'#262626'}} className="portfolio-section"id="projects">
-            <Container sx={{py:8}}>
+            <Container sx={{py:3}}>
             <Typography fontWeight={600} sx={{textAlign:'center', fontSize :{md:18, xs:16 },
-                    color:'whitesmoke'}} variant="h2"  gutterBottom component="div">
+                    color:'whiteSmoke'}} variant="h2"  gutterBottom component="div">
                     All Timeless
                     </Typography> 
                     <Typography fontWeight={900} sx={{textAlign:'center', mb:6, fontSize :{md:46, xs:26 },
@@ -225,7 +29,7 @@ const ProductsAll = () => {
                     All Watches
                     </Typography> 
                     <Typography fontWeight={600} sx={{textAlign:'center',mb:12, fontSize :{md:18, xs:16 },
-                    color:'whitesmoke'}} variant="h2"  gutterBottom component="div">
+                    color:'whiteSmoke'}} variant="h2"  gutterBottom component="div">
                     Unparalleled Portfolio
                     Of Timepieces
                     </Typography>  
@@ -235,6 +39,9 @@ const ProductsAll = () => {
                 <Box className='link-container'>
                 </Box>
                 <br /> <br />
+                { services.length === 0 ?
+                <LinearProgress color="secondary" />
+                :
                 <Box>
                     <Grid container direction="row"
                         justifyContent="center"
@@ -247,7 +54,7 @@ const ProductsAll = () => {
                                 <Box sx={{ textAlign: 'center' }}>
                                     <Box className="box-items">
                                         <>
-                                            <Box className="content">
+                                                <Box className="content">
                                                 <Box className="content-overlay"></Box>
                                                 <img className="content-image" src={service.img} alt="" />
                                                 <Box className="content-details fadeIn-bottom">
@@ -270,10 +77,10 @@ const ProductsAll = () => {
                             </Grid>)
                         }
                     </Grid>
-                </Box>
+                </Box>}
             </Container>
-
         </Box>
+        </>
     );
 };
 

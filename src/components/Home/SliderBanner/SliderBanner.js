@@ -18,8 +18,8 @@ import { Box, Grid, Typography } from "@mui/material";
 
 
 const swiperSlider = [
-    {id:1, img:"https://i.ibb.co/WkyfH58/Slider01.jpg", heading:"Amar Sonar Bangla Ami tomay valobasi", description:"Amar Sonar Bangla Ami tomay valobasiAmar Sonar Bangla Ami tomay valobasiAmar Sonar Bangla Ami tomay valobasiAmar Sonar Bangla Ami tomay valobasiAmar Sonar Bangla Ami tomay valobasi"},
-    {id:2, img:"https://i.ibb.co/F55Bv8q/Slider02.jpg", heading:"", description:""},
+    {id:1, img:"https://i.ibb.co/WkyfH58/Slider01.jpg", heading:"Winner of WatchPro Awards", description:"At WatchShop, you can guarantee you will find more watch brands than anywhere else. From the biggest designer brands, to the best of luxury and some hidden gems, along with outstanding service and next day delivery, WatchShop is the hottest place to buy your next watch."},
+    {id:2, img:"https://i.ibb.co/F55Bv8q/Slider02.jpg", heading:"Winner of WatchPro Awards", description:"At WatchShop, you can guarantee you will find more watch brands than anywhere else. From the biggest designer brands, to the best of luxury and some hidden gems, along with outstanding service and next day delivery, WatchShop is the hottest place to buy your next watch."},
 ];
 
 

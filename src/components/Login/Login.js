@@ -5,21 +5,23 @@ import { useForm } from 'react-hook-form';
 import styles from './Login.module.css';
 import GoogleIcon from '@mui/icons-material/Google';
 import useAuth from '../contexts/useAuth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const {googleSignInMethod, signInUsingUserPassword} = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
     
     // react hook form
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        signInUsingUserPassword(data.userEmail, data.userPassword)
+        signInUsingUserPassword(data.userEmail, data.userPassword, location, navigate);
         reset();
     };
-     
+    
     const handleGoogleButton = (e) =>{
         e.preventDefault();
-        googleSignInMethod();
+        googleSignInMethod(location, navigate);
     }
 
     return (
