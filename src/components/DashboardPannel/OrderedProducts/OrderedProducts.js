@@ -14,12 +14,12 @@ const OrderedProducts = () => {
 
     useEffect(()=>{
         if(!admin){
-            fetch('http://localhost:5000/orders')
+            fetch('https://glacial-escarpment-72720.herokuapp.com/orders')
             .then(res=>res.json())
             .then(data=>setOrderedProducts(data))
         }
         else{
-            fetch(`http://localhost:5000/orders?email=${user?.email}`)
+            fetch(`https://glacial-escarpment-72720.herokuapp.com/orders?email=${user?.email}`)
             .then(res=>res.json())
             .then(data=>setOrderedProducts(data));
         }
@@ -46,7 +46,7 @@ const OrderedProducts = () => {
           }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/orders/${id}`,{
+                fetch(`https://glacial-escarpment-72720.herokuapp.com/orders/${id}`,{
                     method:'DELETE',
                 })
                 .then(res=>res.json())

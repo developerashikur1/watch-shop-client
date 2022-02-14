@@ -47,7 +47,7 @@ const PurchasePase = () => {
 
     const onSubmit = data => {
         const totalData = {...data, name:services[0]?.name, price:services[0]?.price,img:services[0]?.img, status:'Processing', bgColor:'red' };
-        fetch('http://localhost:5000/orders',{
+        fetch('https://glacial-escarpment-72720.herokuapp.com/orders',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'

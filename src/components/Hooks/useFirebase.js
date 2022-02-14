@@ -138,7 +138,7 @@ const useFirebase = () =>{
     //  save user to database
     const saveUser = (email, displayName, method) =>{
         const user = {email, displayName};
-        fetch('http://localhost:5000/users',{
+        fetch('https://glacial-escarpment-72720.herokuapp.com/users',{
             method:method,
             headers:{
                 'Content-Type':'application/json'
@@ -151,7 +151,7 @@ const useFirebase = () =>{
 
     // get admin
     useEffect(()=>{
-        fetch(`http://localhost:5000/users/${user?.email}`)
+        fetch(`https://glacial-escarpment-72720.herokuapp.com/users/${user?.email}`)
         .then(res=>res.json())
         .then(data=>setAdmin(data))
         
